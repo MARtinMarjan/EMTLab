@@ -59,8 +59,14 @@ public class BookServiceImpl implements BookService {
         if (book == null) {
             return;
         }
-        book.setAvailableCopies(book.getAvailableCopies() - 1);
-        this.bookRepository.save(book);
+
+        if(book.getAvailableCopies() > 0){
+            book.setAvailableCopies(book.getAvailableCopies() - 1);
+            this.bookRepository.save(book);
+        }else{
+            return;
+        }
+
     }
 
     @Override

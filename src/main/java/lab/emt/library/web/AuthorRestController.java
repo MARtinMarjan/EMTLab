@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/authors")
 public class AuthorRestController {
     private final AuthorService authorService;
@@ -28,7 +29,7 @@ public class AuthorRestController {
         }
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     public List<Author> listAuthors() {
         return this.authorService.listAllAuthors();
     }

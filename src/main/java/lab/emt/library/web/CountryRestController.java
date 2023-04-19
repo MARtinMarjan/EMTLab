@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/countries")
 public class CountryRestController {
     private final CountryService countryService;
@@ -27,7 +28,7 @@ public class CountryRestController {
         }
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     public List<Country> listAllCountries() {
         return this.countryService.listAllCountries();
     }
